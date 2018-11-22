@@ -4,13 +4,14 @@
 #
 Name     : perl-App-cpanminus
 Version  : 1.7044
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Summary  : 'get, unpack, build and install modules from CPAN'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-App-cpanminus-bin = %{version}-%{release}
+Requires: perl-App-cpanminus-license = %{version}-%{release}
 Requires: perl-App-cpanminus-man = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
@@ -23,6 +24,7 @@ cpanm Module
 %package bin
 Summary: bin components for the perl-App-cpanminus package.
 Group: Binaries
+Requires: perl-App-cpanminus-license = %{version}-%{release}
 Requires: perl-App-cpanminus-man = %{version}-%{release}
 
 %description bin
@@ -37,6 +39,14 @@ Provides: perl-App-cpanminus-devel = %{version}-%{release}
 
 %description dev
 dev components for the perl-App-cpanminus package.
+
+
+%package license
+Summary: license components for the perl-App-cpanminus package.
+Group: Default
+
+%description license
+license components for the perl-App-cpanminus package.
 
 
 %package man
@@ -72,6 +82,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-App-cpanminus
+cp LICENSE %{buildroot}/usr/share/package-licenses/perl-App-cpanminus/LICENSE
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -84,8 +96,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/App/cpanminus.pm
-/usr/lib/perl5/vendor_perl/5.26.1/App/cpanminus/fatscript.pm
+/usr/lib/perl5/vendor_perl/5.28.0/App/cpanminus.pm
+/usr/lib/perl5/vendor_perl/5.28.0/App/cpanminus/fatscript.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -95,6 +107,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %defattr(-,root,root,-)
 /usr/share/man/man3/App::cpanminus.3
 /usr/share/man/man3/App::cpanminus::fatscript.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-App-cpanminus/LICENSE
 
 %files man
 %defattr(0644,root,root,0755)
