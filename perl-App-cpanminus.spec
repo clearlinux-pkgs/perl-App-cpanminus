@@ -96,8 +96,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.0/App/cpanminus.pm
-/usr/lib/perl5/vendor_perl/5.28.0/App/cpanminus/fatscript.pm
+/usr/lib/perl5/vendor_perl/5.28.1App/cpanminus.pm
+/usr/lib/perl5/vendor_perl/5.28.1App/cpanminus/fatscript.pm
 
 %files bin
 %defattr(-,root,root,-)
