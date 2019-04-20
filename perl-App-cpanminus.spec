@@ -4,7 +4,7 @@
 #
 Name     : perl-App-cpanminus
 Version  : 1.7044
-Release  : 7
+Release  : 8
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Summary  : 'get, unpack, build and install modules from CPAN'
@@ -25,7 +25,6 @@ cpanm Module
 Summary: bin components for the perl-App-cpanminus package.
 Group: Binaries
 Requires: perl-App-cpanminus-license = %{version}-%{release}
-Requires: perl-App-cpanminus-man = %{version}-%{release}
 
 %description bin
 bin components for the perl-App-cpanminus package.
@@ -36,6 +35,7 @@ Summary: dev components for the perl-App-cpanminus package.
 Group: Development
 Requires: perl-App-cpanminus-bin = %{version}-%{release}
 Provides: perl-App-cpanminus-devel = %{version}-%{release}
+Requires: perl-App-cpanminus = %{version}-%{release}
 
 %description dev
 dev components for the perl-App-cpanminus package.
@@ -96,8 +96,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.1/App/cpanminus.pm
-/usr/lib/perl5/vendor_perl/5.28.1/App/cpanminus/fatscript.pm
+/usr/lib/perl5/vendor_perl/5.28.2/App/cpanminus.pm
+/usr/lib/perl5/vendor_perl/5.28.2/App/cpanminus/fatscript.pm
 
 %files bin
 %defattr(-,root,root,-)
