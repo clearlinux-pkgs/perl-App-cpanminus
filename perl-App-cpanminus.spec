@@ -4,7 +4,7 @@
 #
 Name     : perl-App-cpanminus
 Version  : 1.7044
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Summary  : 'get, unpack, build and install modules from CPAN'
