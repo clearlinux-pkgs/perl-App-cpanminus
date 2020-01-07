@@ -4,7 +4,7 @@
 #
 Name     : perl-App-cpanminus
 Version  : 1.7044
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Summary  : 'get, unpack, build and install modules from CPAN'
@@ -13,6 +13,7 @@ License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-App-cpanminus-bin = %{version}-%{release}
 Requires: perl-App-cpanminus-license = %{version}-%{release}
 Requires: perl-App-cpanminus-man = %{version}-%{release}
+Requires: perl-App-cpanminus-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -57,14 +58,24 @@ Group: Default
 man components for the perl-App-cpanminus package.
 
 
+%package perl
+Summary: perl components for the perl-App-cpanminus package.
+Group: Default
+Requires: perl-App-cpanminus = %{version}-%{release}
+
+%description perl
+perl components for the perl-App-cpanminus package.
+
+
 %prep
 %setup -q -n App-cpanminus-1.7044
+cd %{_builddir}/App-cpanminus-1.7044
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -74,7 +85,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -83,7 +94,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-App-cpanminus
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-App-cpanminus/LICENSE
+cp %{_builddir}/App-cpanminus-1.7044/LICENSE %{buildroot}/usr/share/package-licenses/perl-App-cpanminus/5b76b391b813496b7d89c2c0002970deaa2a8a62
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -96,8 +107,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/App/cpanminus.pm
-/usr/lib/perl5/vendor_perl/5.28.2/App/cpanminus/fatscript.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -110,8 +119,13 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-App-cpanminus/LICENSE
+/usr/share/package-licenses/perl-App-cpanminus/5b76b391b813496b7d89c2c0002970deaa2a8a62
 
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/man1/cpanm.1
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/App/cpanminus.pm
+/usr/lib/perl5/vendor_perl/5.30.1/App/cpanminus/fatscript.pm
