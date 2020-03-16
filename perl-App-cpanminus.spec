@@ -4,7 +4,7 @@
 #
 Name     : perl-App-cpanminus
 Version  : 1.7044
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7044.tar.gz
 Summary  : 'get, unpack, build and install modules from CPAN'
@@ -127,5 +127,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/App/cpanminus.pm
-/usr/lib/perl5/vendor_perl/5.30.1/App/cpanminus/fatscript.pm
+/usr/lib/perl5/vendor_perl/5.30.2/App/cpanminus.pm
+/usr/lib/perl5/vendor_perl/5.30.2/App/cpanminus/fatscript.pm
