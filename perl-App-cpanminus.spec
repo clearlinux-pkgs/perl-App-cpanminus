@@ -4,7 +4,7 @@
 #
 Name     : perl-App-cpanminus
 Version  : 1.7046
-Release  : 25
+Release  : 26
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7046.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7046.tar.gz
 Summary  : 'get, unpack, build and install modules from CPAN'
@@ -94,7 +94,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-App-cpanminus
-cp %{_builddir}/App-cpanminus-1.7046/LICENSE %{buildroot}/usr/share/package-licenses/perl-App-cpanminus/417bb11ff333b09a84459664db9c4ea05b039ba7
+cp %{_builddir}/App-cpanminus-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/perl-App-cpanminus/417bb11ff333b09a84459664db9c4ea05b039ba7 || :
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
